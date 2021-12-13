@@ -56,7 +56,6 @@ class CalendarOptimization extends Component {
   };
 
    addCalendar = (name, last_edited) => {
-     console.log(name, last_edited);
      let cal = [...this.state.calendars];
      cal.push({ name, last_edited, status: 'Processed', id: uuidv1() });
     this.setState({ calendars:  cal });

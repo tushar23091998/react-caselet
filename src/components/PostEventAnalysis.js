@@ -112,7 +112,7 @@ class PostEventAnalysis extends Component {
               aria-label="basic tabs example"
             >
               <Tab label="Efficiency Matrix" {...a11yProps(0)} />
-              <Tab label="Detailed View" {...a11yProps(1)} />
+              <Tab label="Detailed Table" {...a11yProps(1)} />
             </Tabs>
           </Box>
           <TabPanel value={this.state.value} index={0}>
