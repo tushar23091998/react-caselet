@@ -1,4 +1,3 @@
-import { AgGridReact } from "ag-grid-react";
 import React, { Component } from "react";
 import {
   BarChart,
@@ -6,29 +5,21 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  ResponsiveContainer,
   Tooltip,
   Legend,
-  ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "./CalendarOptimization.css";
 import CampaignDetails from "../dummy_data/campaign_matrix.json";
-
-const columnDefs = [
-  { headerName: "Classification", field: "classification_name" },
-  { headerName: "Number of Offers", field: "number_of_offers" },
-  {
-    headerName: "Total Incremental Sales (€)",
-    field: "total_incremental_sales",
-  },
-  {
-    headerName: "Total Incremental Margin (€)",
-    field: "total_incremental_margin",
-  },
-  { headerName: "Classification (%)", field: "classification" },
-];
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const gridStyleMatrix = {
   "padding-top": "40px",
@@ -40,7 +31,8 @@ const gridStyleMatrix = {
 const chartMatrixStyle = {
   width: "93.5%",
   height: "350px",
-  'margin-bottom': '50px'
+  "margin-bottom": "50px",
+  "margin-top": "50px",
 };
 
 class EfficiencyMatrix extends Component {
@@ -63,12 +55,59 @@ class EfficiencyMatrix extends Component {
       <div>
         <h6 style={{ "font-weight": "bold" }}>Campaign Effectiveness Matrix</h6>
         <div className="ag-theme-alpine" style={gridStyleMatrix}>
-          <AgGridReact
-            columnDefs={columnDefs}
-            rowData={this.state.campaignMatrix}
-            defaultColDef={{ flex: 1 }}
-          ></AgGridReact>
+          <TableContainer style={{ gridStyleMatrix }} component={Paper}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Classification</TableCell>
+                  <TableCell align="right">
+                    Number&nbsp;of&nbsp;Offers
+                  </TableCell>
+                  <TableCell align="right">
+                    Total Incremental Sales&nbsp;(€)
+                  </TableCell>
+                  <TableCell align="right">
+                    Total Incremental Margin&nbsp;(€)
+                  </TableCell>
+                  <TableCell align="right">Classification&nbsp;(%)</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.campaignMatrix.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {row.classification_name}
+                    </TableCell>
+                    <TableCell align="right">{row.number_of_offers}</TableCell>
+                    <TableCell align="right">
+                      {row.total_incremental_sales}
+                    </TableCell>
+                    <TableCell align="right">
+                      {row.total_incremental_margin}
+                    </TableCell>
+                    <TableCell align="right">{row.classification}</TableCell>
+                  </TableRow>
+                ))}
+                <TableRow
+                  key={-1}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {""}
+                  </TableCell>
+                  <TableCell align="right">{""}</TableCell>
+                  <TableCell align="right">{this.total_sales}</TableCell>
+                  <TableCell align="right">{this.total_margin}</TableCell>
+                  <TableCell align="right">{""}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
+
         <div style={chartMatrixStyle}>
           <ResponsiveContainer>
             <BarChart

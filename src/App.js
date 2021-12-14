@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import CalendarOptimization from "./components/CalendarOptimization";
-import PostEventAnalysis from "./components/PostEventAnalysis";
+import Navbar from "./pages/Shared/Navbar";
+import Home from "./pages/Home/Home";
+import CalendarOptimization from "./pages/CalendarOptimization/CalendarOptimization";
+import PostEventAnalysis from "./pages/PostEventAnalysis/PostEventAnalysis";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 class App extends Component {
