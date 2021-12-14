@@ -29,8 +29,7 @@ const clearButtonStyle = {
   "margin-top": "40px",
   "margin-left": "25px",
   "font-weight": "bold",
-  'background-color': '#808080',
-  color: 'black'
+  color: '#104d23'
 };
 
 const flexStyle = {

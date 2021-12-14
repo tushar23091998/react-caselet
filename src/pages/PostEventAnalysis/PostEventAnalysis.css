@@ -1,0 +1,16 @@
+.calendar-dropdown {
+    width: 200;
+    height: 54;
+    margin-top: 20px;
+    margin-right: 100px;
+    font-weight: bold;
+    float: right;
+  };
+  
+  .tabStyle {
+    margin-top: 30px;
+    margin-left: 50px;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y: auto;
+  };

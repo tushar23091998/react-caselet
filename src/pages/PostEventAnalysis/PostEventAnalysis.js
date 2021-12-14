@@ -11,23 +11,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import DetailedTable from "../../components/DetailedTable";
 import EfficiencyMatrix from "../../components/EfficiencyMatrix";
-
-const style = {
-  width: 200,
-  height: 54,
-  "margin-top": "20px",
-  "margin-right": "100px",
-  "font-weight": "bold",
-  float: "right",
-};
-
-const tabStyle = {
-  "margin-top": "30px",
-  "margin-left": "50px",
-  "background-color": "white",
-  "overflow-x": "hidden",
-  "overflow-y": "auto",
-};
+import './PostEventAnalysis.css'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,7 +68,7 @@ class PostEventAnalysis extends Component {
     return (
       <div>
         <div>
-          <Box sx={style}>
+          <Box className='calendar-dropdown'>
             <FormControl fullWidth>
               <InputLabel variant="standard" htmlFor="uncontrolled-native">
                 Calendar
@@ -104,8 +88,8 @@ class PostEventAnalysis extends Component {
         <div>
           <DropdownRow />
         </div>
-        <Box style={tabStyle}>
-          <Box>
+        <Box className="tabStyle">
+          <Box sx={{'margin-left': '50px', 'margin-top': '40px'}}>
             <Tabs
               value={this.state.value}
               onChange={this.toggleTab}
@@ -115,10 +99,10 @@ class PostEventAnalysis extends Component {
               <Tab label="Detailed Table" {...a11yProps(1)} />
             </Tabs>
           </Box>
-          <TabPanel value={this.state.value} index={0}>
+          <TabPanel style={{'margin-left': '45px'}} value={this.state.value} index={0}>
             <EfficiencyMatrix />
           </TabPanel>
-          <TabPanel value={this.state.value} index={1}>
+          <TabPanel style={{'margin-left': '45px'}} value={this.state.value} index={1}>
             <DetailedTable />
           </TabPanel>
         </Box>
