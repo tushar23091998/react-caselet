@@ -20,7 +20,8 @@ const applyButtonStyle = {
   "margin-top": "40px",
   "margin-left": "25px",
   "font-weight": "bold",
-  color: 'white'
+  color: 'white',
+  'background-color': '#104d23'
 };
 
 const clearButtonStyle = {
@@ -125,7 +126,7 @@ class DropdownRow extends Component {
             </NativeSelect>
           </FormControl>
         </Box>
-        <Button variant="contained" style={applyButtonStyle} color="success">
+        <Button variant="contained" style={applyButtonStyle}>
           APPLY FILTERS
         </Button>
         <Button variant="outlined" style={clearButtonStyle}>
